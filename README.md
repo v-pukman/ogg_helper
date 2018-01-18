@@ -49,5 +49,5 @@ clang++ oggEncoder.cpp ../src/wavHeader.cpp ../src/oggHelper.cpp ../src/vorbisSe
 ```
 
 ## Example Audio File
-Audio file F*KING BOUNCE by [vantage600] (http://dig.ccmixter.org/files/vantage600/31768)
+Audio file F*KING BOUNCE by [vantage600](http://dig.ccmixter.org/files/vantage600/31768).
 Licensed under a Creative Commons Attribution (3.0) license.
