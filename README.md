@@ -37,7 +37,7 @@ brew install libvorbis
 ```
 cd examples
 clang++ oggDecoder.cpp ../src/wavHeader.cpp ../src/oggHelper.cpp ../src/vorbisSettings.cpp -I ../src -o oggDecoder -lvorbis -logg -lvorbisenc -lvorbisfile -std=c++11
-./oggDecoder "path_to_ogg_file.ogg" "decoded_file.wav"
+./oggDecoder vantage600_-_F_KING_BOUNCE.ogg vantage600_-_F_KING_BOUNCE.wav
 ```
 
 
@@ -45,5 +45,9 @@ clang++ oggDecoder.cpp ../src/wavHeader.cpp ../src/oggHelper.cpp ../src/vorbisSe
 ```
 cd examples
 clang++ oggEncoder.cpp ../src/wavHeader.cpp ../src/oggHelper.cpp ../src/vorbisSettings.cpp -I ../src -o oggEncoder -lvorbis -logg -lvorbisenc -lvorbisfile -std=c++11
-./oggEncoder "path_to_wav_file.wav" "encoded_file.ogg"
+./oggEncoder vantage600_-_F_KING_BOUNCE.wav vantage600_-_F_KING_BOUNCE_ENCODED.ogg
 ```
+
+## Example Audio File
+Audio file F*KING BOUNCE by [vantage600] (http://dig.ccmixter.org/files/vantage600/31768)
+Licensed under a Creative Commons Attribution (3.0) license.
