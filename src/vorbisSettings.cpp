@@ -5,7 +5,7 @@
 
 	Vorbis settings (comments, encode mode, etc) used for OggHelper (Vorbis Wrapper by Osofem)
 ***********************************************************************************************/
-#include "OggHelper_VorbisSettings.h"
+#include "vorbisSettings.h"
 
 VorbisComment::VorbisComment()
 {
@@ -28,11 +28,11 @@ VorbisComment::VorbisComment()
 
 EncodeSetting::EncodeSetting()
 {
-	channel = Stereo;
+	channel = OH_Stereo;
 	encode_mode = VBR;
-	min_abr_br = OGG_BR_UNSET;
-	max_abr_br = OGG_BR_UNSET;
-	abr_br = OGG_BR_128kbps;
+	min_abr_br = OH_BR_UNSET;
+	max_abr_br = OH_BR_UNSET;
+	abr_br = OH_BR_128kbps;
 	vbr_quality = 0.5;
-	cbr_br = OGG_BR_128kbps;
+	cbr_br = OH_BR_128kbps;
 }

@@ -9,33 +9,10 @@
 #include "oggHelper.h"
 
 //Constructor
-oggHelper::oggHelper()
-{
-	//Initialize to NULL, aids deletion/closing later
-	/*for(int i = 0; i < MAX_THREAD_COUNT; i++)
-	{
-		hThread[i] = NULL;
-		hSParam[i] = NULL;
-	}*/
-
-}
+oggHelper::oggHelper() {}
 
 //Destructor
-oggHelper::~oggHelper()
-{
-	//Destroy all declared objects
-	/*for(int i = 0; i < MAX_THREAD_COUNT; i++)
-	{
-		if(hThread[i] != NULL)
-			CloseHandle(hThread[i]);
-
-		if(hSParam[i] != NULL)
-			delete hSParam[i];
-	}*/
-}
-
-
-
+oggHelper::~oggHelper() {}
 
 
 /*The actual Encode function*/
@@ -243,7 +220,7 @@ BOOL oggHelper::encode(const char* file_in, const char* file_out, EncodeSetting 
 			 //data to encode
 			 //expose the buffer to submit data
 			 float** buffer = vorbis_analysis_buffer(&vd, READ);
-			 if(wfh.num_channels == 2 && es.channel == Mono)
+			 if(wfh.num_channels == 2 && es.channel == OH_Mono)
 			 {
 				 //Stereo input, mono output
 				 for(i = 0; i < bytes/4; i++)
@@ -252,7 +229,7 @@ BOOL oggHelper::encode(const char* file_in, const char* file_out, EncodeSetting 
 					 buffer[0][i] = ((((readbuffer[i*4+1]<<8) | (0x00ff & (int)readbuffer[i*4])) / 32768.f) + (((readbuffer[i*4+3]<<8) | (0x00ff & (int)readbuffer[i*4+2])) / 32768.f)) * 0.5f;
 				 }
 			 }
-			 else if(wfh.num_channels == 2 && es.channel == Stereo)
+			 else if(wfh.num_channels == 2 && es.channel == OH_Stereo)
 			 {
 				 //deinterleave samples
 				 for(i = 0; i < bytes/4; i++)
@@ -261,7 +238,7 @@ BOOL oggHelper::encode(const char* file_in, const char* file_out, EncodeSetting 
 					buffer[1][i] = ((readbuffer[i*4+3]<<8) | (0x00ff & (int)readbuffer[i*4+2])) / 32768.f;
 				 }
 			 }
-			 else if(wfh.num_channels == 1 && es.channel == Stereo)
+			 else if(wfh.num_channels == 1 && es.channel == OH_Stereo)
 			 {
 				 //get the mono channel and add it to both left and right
 				 for(i = 0; i < bytes/2; i++)
@@ -271,7 +248,7 @@ BOOL oggHelper::encode(const char* file_in, const char* file_out, EncodeSetting 
 					buffer[1][i] = monoChl;
 				 }
 			 }
-			  else if(wfh.num_channels == 1 && es.channel == Mono)
+			  else if(wfh.num_channels == 1 && es.channel == OH_Mono)
 			 {
 				 //get the mono channel
 				 for(i = 0; i < bytes/2; i++)

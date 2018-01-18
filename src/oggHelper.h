@@ -14,23 +14,22 @@
 #include <math.h> //Needed for the floor function in decode
 
 #include "bool.h"
-#include "WaveFileHeader.h"
-#include "OggHelper_VorbisSettings.h"
+#include "vorbisSettings.h"
 #include "wavHeader.h"
 
 
 class oggHelper; //oggHelper prototype, needed because of struct StaticParam_t
 
 //Use to hold parameters for the thread(async) function
-struct OGG_StaticParam_t
-{
-	char* pcm;
-	char* ogg;
-	EncodeSetting settings;
-	VorbisComment comments;
-	/*WNDPROC callback_proc;*/
-	oggHelper* oggObj;
-};
+// struct OGG_StaticParam_t
+// {
+// 	char* pcm;
+// 	char* ogg;
+// 	EncodeSetting settings;
+// 	VorbisComment comments;
+// 	/*WNDPROC callback_proc;*/
+// 	oggHelper* oggObj;
+// };
 
 struct WAVHEADER {
   // RIFF Header
@@ -63,14 +62,14 @@ private:
 
 	#define READ 1024
 
-	#define OH_STARTED	WM_USER+1
-	#define OH_COMPUTED	WM_USER+2
-	#define OH_DONE		WM_USER+3
-	#define OH_ERROR	WM_USER+4
+	// #define OH_STARTED	WM_USER+1
+	// #define OH_COMPUTED	WM_USER+2
+	// #define OH_DONE		WM_USER+3
+	// #define OH_ERROR	WM_USER+4
 
-	#define MAX_THREAD_COUNT 5
+	//#define MAX_THREAD_COUNT 5
 	//HANDLE hThread[MAX_THREAD_COUNT];
-	OGG_StaticParam_t* hSParam[MAX_THREAD_COUNT];
+	//OGG_StaticParam_t* hSParam[MAX_THREAD_COUNT];
 
 	//The static member from which we can start the thread
 	//static int encode_s(void* param);
