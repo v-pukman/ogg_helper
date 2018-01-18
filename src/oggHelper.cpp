@@ -326,7 +326,7 @@ done:
 //The actual decode function
 BOOL oggHelper::decode(const char* file_in, const char* file_out/*, WNDPROC callbackproc*/)
 {
-	printf("%s\n", "oog decode run...");
+	//printf("%s\n", "oog decode run...");
 
 	BOOL hresult = TRUE;
 	wavHeader h;
@@ -347,11 +347,9 @@ BOOL oggHelper::decode(const char* file_in, const char* file_out/*, WNDPROC call
 			fclose(f_in);
 
 		return hresult;
-
-		//goto done;
 	}
 
-	printf("%s\n", "1");
+	//printf("%s\n", "1");
 
 	if(!f_out)
 	{
@@ -368,10 +366,9 @@ BOOL oggHelper::decode(const char* file_in, const char* file_out/*, WNDPROC call
 			fclose(f_out);
 
 		return hresult;
-		//goto done;
 	}
 
-	printf("%s\n", "2");
+	//printf("%s\n", "2");
 
 	//Check
 	OggVorbis_File vf;
@@ -395,7 +392,7 @@ BOOL oggHelper::decode(const char* file_in, const char* file_out/*, WNDPROC call
     return hresult;
   }
 
-  printf("%s\n", "3");
+  //printf("%s\n", "3");
 
 
 	long cumulative_read = 0;
@@ -755,13 +752,6 @@ BOOL oggHelper::decode(const char* file_in, const char* file_out/*, WNDPROC call
 			//fseek(f_out, 0, SEEK_SET);
 			//fwrite(&wfh, sizeof(wfh), 1, f_out);
 
-			/*WAVHEADER wfh;
-			wfh.sample_rate = vi.rate;
-			wfh.bit_depth = 16;
-			wfh.num_channels = vi.channels;
-			wfh.data_bytes = byteWritten;
-			fseek(f_out, 0, SEEK_SET);
-			fwrite(&wfh, sizeof(wfh), 1, f_out);*/
 			hresult = h.rewrite_header(f_out, byteWritten);
 			if (hresult != TRUE) {
 				printf("%s\n", "cant rewrite header");
@@ -792,7 +782,7 @@ BOOL oggHelper::decode(const char* file_in, const char* file_out/*, WNDPROC call
 	/* OK, clean up the framer */
 	ogg_sync_clear(&oy);
 
-	printf("%s\n", "final");
+	//printf("%s\n", "final");
 
 done:
 	if(f_in != NULL)
